@@ -9,20 +9,25 @@ So after defining it with Berkshelf/Librarian, you have to provide as minimal co
 config
 ======
 Let's imagine you have several static websites, you want to host, each in it's own repository:
+
 ```
 example1.com -> github.com/my-sites/example1.com
 example2.com -> bitbucket.org/my-sites/example2.com
 ...
 ```
+
 To get them running, you should do 3 simple steps.
 ### 1. adding cookbook
 First thing todo, is adding application_static cookbook to your chef installation.  
 Berkshelf example:
+
 ```ruby
 cookbook "application_static", github: "allnightlong/application_static"
 ```
+
 ### 2. create role
 Then create appropriate role:
+
 ```json
 {
   "name": "static_sites",
@@ -58,8 +63,10 @@ Note that you shouldn't really store private key in role file, in favor of [data
 Also, if you getting troubles with multiline private key, use [this tip](https://tickets.opscode.com/browse/CHEF-3540).
 
 ### 3. apply role
+
 ```
 knife node run_list add NODE_NAME role[static_sites]
 ```
+
 That's basically it. After adding this role to node's run-list, you sites should be up and running.  
 This cookbook was tested on Ubuntu 14.04 LTS, but there is nothing os/platform/version specific, so it should work on any environment.
