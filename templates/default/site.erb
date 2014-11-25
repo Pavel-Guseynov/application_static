@@ -1,0 +1,18 @@
+server {
+        server_name <%= @app['name'] %> www.<%= @app['name'] %>;
+
+
+        if ($host ~* www\.(.*)) {
+                set $clean_host $1;
+                rewrite ^(.*)$ $scheme://$clean_host$1 permanent;
+        }
+
+        root <%= node['application_static']['app_path'] %>/<%= @app['name'] %>/current;
+        access_log <%= node['nginx']['log_dir'] %>/<%= @app['name'] %>.log;
+
+        #http://stackoverflow.com/questions/19515132/nginx-cache-static-files
+        location ~* ^.+\.(?:css|cur|js|jpe?g|gif|htc|ico|png|xml|otf|ttf|eot|woff|svg)$ {
+                access_log off;
+                expires max;
+        }
+}
