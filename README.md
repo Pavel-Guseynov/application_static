@@ -70,5 +70,6 @@ Also, if you getting troubles with multiline private key, use [this tip](https:/
 knife node run_list add NODE_NAME role[static_sites]
 ```
 
-That's basically it. After adding this role to node's run-list, you sites should be up and running.  
-This cookbook was tested on Ubuntu 14.04 LTS, but there is nothing os/platform/version specific, so it should work on any environment.
+That's basically it. After adding this role to node's run-list, your sites should be up and running.  
+This cookbook was tested on Ubuntu 14.04 LTS, but there is nothing os/platform/version specific, so it should work on any environment.  
+[Pull-requests](https://github.com/allnightlong/application_static/pulls) are very warm welcome.
