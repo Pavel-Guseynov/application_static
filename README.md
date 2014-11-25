@@ -50,7 +50,8 @@ Then create appropriate role:
     "recipe[nginx]",
     "recipe[application_static]"
   ]
-}```
+}
+```
 
 Note that you shouldn't really store private key in role file, in favor of [databags](https://docs.getchef.com/essentials_data_bags.html) or even better [encrypted databags](https://docs.getchef.com/essentials_data_bags.html#encrypt-a-data-bag-item).
 If you getting troubles with multiline private key, use [this tip](https://tickets.opscode.com/browse/CHEF-3540).
