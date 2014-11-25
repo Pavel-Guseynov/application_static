@@ -11,4 +11,5 @@ depends "application"
 depends "nginx"
 
 suggests "git"
-suggests "mercurial"
+
+supports 'ubuntu'
