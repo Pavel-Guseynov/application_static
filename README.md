@@ -22,35 +22,38 @@ cookbook "application_static", github: "allnightlong/application_static"
 ```
 ### 2. create role
 Then create appropriate role:
-```ruby
-name "static_sites"
-default_attributes "nginx" => { "default_site_enabled" => false, "install_method" => "repo" },
-    "application_static" => 
-        { 
-            "apps" => 
-                [
-                    { 'name' => 'example1.com', 'url' => 'git@github.com:my-sites/example1.com', 'enabled' => true },
-                    { 'name' => 'example2.com', 'url' => 'hg@bitbucket.org/my-sites/example2.com', 'enabled' => true }
-                ],
-            "deploy_key" => <<-eos
------BEGIN RSA PRIVATE KEY-----
-MIIEowIBAAKCAQEA38rGcWTe5Iux2MtIgmbl08P0f3KZfJBCIvKES9oFFglqAbI7
-+raUedqlEZe59A3RinfjDMEKXeawlgim00BIwwnh/UipN7/4Gqr3BrZ2rmKFpCUO
-EqbjBCAarzrEGMxg0wrmbRDxs22T1Du0i6VnAUBjOUVV8ALaH7fKZeOxLRD44LtJ
-...
-...
-...
-5qJkpABldGtXpWxrllpFvWDGSWdv8WYJW308dXIp2C5LjE3saTuhBTgain7GDs6P
-p5lXlrB0zUGU92likbgEvIFN0lzkpYt02ccxTCCU6bIa9pTI3IBK
------END RSA PRIVATE KEY-----
-eos
+```json
+{
+  "name": "static_sites",
+  "override_attributes": {
+    "nginx": {
+      "default_site_enabled": false,
+      "install_method": "repo"
+    },
+    "application_static": {
+      "apps": [
+        {
+          "name": "example1.com",
+          "url": "git@github.com:my-sites/example1.com",
+          "enabled": true
+        },
+        {
+          "name": "example2.com",
+          "url": "hg@bitbucket.org/my-sites/example2.com",
+          "enabled": true
         }
-    
-run_list "recipe[nginx]", "recipe[application_static]"
-```
+      ],
+      "deploy_key" : "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEA38rGcWTe5Iux2MtIgmbl08P0f3KZfJBCIvKES9oFFglqAbI7\n...........\n5qJkpABldGtXpWxrllpFvWDGSWdv8WYJW308dXIp2C5LjE3saTuhBTgain7GDs6P\np5lXlrB0zUGU92likbgEvIFN0lzkpYt02ccxTCCU6bIa9pTI3IBK\n-----END RSA PRIVATE KEY-----"
+    }
+  },
+  "run_list": [
+    "recipe[nginx]",
+    "recipe[application_static]"
+  ]
+}```
 
-I'm using .rb role syntax only for example purpose. 
-You shouldn't really store private key in role file, in favor of [databags](https://docs.getchef.com/essentials_data_bags.html) or even better [encrypted databags](https://docs.getchef.com/essentials_data_bags.html#encrypt-a-data-bag-item).
+Note that you shouldn't really store private key in role file, in favor of [databags](https://docs.getchef.com/essentials_data_bags.html) or even better [encrypted databags](https://docs.getchef.com/essentials_data_bags.html#encrypt-a-data-bag-item).
+If you getting troubles with multiline private key, use [this tip](https://tickets.opscode.com/browse/CHEF-3540).
 
 ### 3. apply role
 ```
