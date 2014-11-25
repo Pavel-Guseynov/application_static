@@ -1,10 +1,6 @@
 include_recipe "nginx"
 
 node['application_static']['apps'].each do |app|
-	log "#{node['application_static']['app_path']}/#{app['name']}" do
-	  level :warn
-	end
-
 	application app['name'] do
 	  path  "#{node['application_static']['app_path']}/#{app['name']}"
 	  owner node['nginx']['user']
