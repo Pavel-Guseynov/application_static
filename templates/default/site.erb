@@ -1,7 +1,7 @@
 server {
         server_name <%= @app['name'] %> www.<%= @app['name'] %>;
 
-
+        # redirect www.example.com -> example.com
         if ($host ~* www\.(.*)) {
                 set $clean_host $1;
                 rewrite ^(.*)$ $scheme://$clean_host$1 permanent;
