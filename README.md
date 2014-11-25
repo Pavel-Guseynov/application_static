@@ -13,13 +13,13 @@ config
 Let's imagine you have several static websites, you want to host, each in it's own repository:
 
 ```
-example1.com -> github.com/my-sites/example1.com
-example2.com -> bitbucket.org/my-sites/example2.com
+example1.com -> github.com/my-account/example1.com
+example2.com -> bitbucket.org/my-account/example2.com
 ...
 ```
 
 To get them running, you should do 3 steps.
-### 1. adding cookbook
+### 1. Adding cookbook
 First thing to do, is adding application_static cookbook to your chef installation.  
 Berkshelf example:
 
@@ -27,7 +27,7 @@ Berkshelf example:
 cookbook "application_static"
 ```
 
-### 2. create role
+### 2. Create role
 Then create appropriate role:
 
 ```json
@@ -42,12 +42,12 @@ Then create appropriate role:
       "apps": [
         {
           "name": "example1.com",
-          "url": "git@github.com:my-sites/example1.com",
+          "url": "git@github.com:my-account/example1.com.git",
           "enabled": true
         },
         {
           "name": "example2.com",
-          "url": "hg@bitbucket.org/my-sites/example2.com",
+          "url": "git@bitbucket.org:my-account/example2.com.git",
           "enabled": true
         }
       ],
@@ -64,7 +64,7 @@ Then create appropriate role:
 Note, that you shouldn't really store private key in role file, in favor of [databags](https://docs.getchef.com/essentials_data_bags.html) or even better [encrypted databags](https://docs.getchef.com/essentials_data_bags.html#encrypt-a-data-bag-item).  
 Also, if you getting troubles with multiline private key, use [this tip](https://tickets.opscode.com/browse/CHEF-3540).
 
-### 3. apply role
+### 3. Apply role
 
 ```
 knife node run_list add NODE_NAME role[static_sites]
