@@ -1,7 +1,7 @@
 application_static cookbook
 ===========================
 
-This is the simple chef cookbook to quick host static web sites with nginx. Based on excelent [application cookbook](https://github.com/poise/application), which is only providing LWRPs, this cookbok actualy has recipe.  
+This is the simple chef cookbook to quick host static web sites with nginx. Based on excellent [application cookbook](https://github.com/poise/application), which is only providing LWRPs, this cookbook actually  has recipe.  
 
 So after defining it with Berkshelf/Librarian, you have to provide as minimal config as possible, to make your sites up and running.
 
@@ -61,5 +61,5 @@ Also, if you getting troubles with multiline private key, use [this tip](https:/
 ```
 knife node run_list add NODE_NAME role[static_sites]
 ```
-That's bassicly it. After adding this role to node's run-list, you sites should be up and running.  
-This cookbook was tested on Ubuntu 14.04 LTS, but there is nothing os/platform/vesrion specific, so it should work on any environment.
+That's basically it. After adding this role to node's run-list, you sites should be up and running.  
+This cookbook was tested on Ubuntu 14.04 LTS, but there is nothing os/platform/version specific, so it should work on any environment.
