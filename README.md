@@ -5,7 +5,7 @@ github:  https://github.com/allnightlong/application_static
 
 This is the simple chef cookbook to quick host static web sites with nginx. Based on excellent [application cookbook](https://github.com/poise/application), which is only providing LWRPs, this cookbook actually  has recipe.  
 
-So after defining it with Berkshelf/Librarian, you have to provide as minimal config as possible, to make your sites up and running.
+So after defining it with Berkshelf/Librarian, you have to provide as minimal config as possible, to make your sites working.
 
 
 config
@@ -18,9 +18,9 @@ example2.com -> bitbucket.org/my-sites/example2.com
 ...
 ```
 
-To get them running, you should do 3 simple steps.
+To get them running, you should do 3 steps.
 ### 1. adding cookbook
-First thing todo, is adding application_static cookbook to your chef installation.  
+First thing to do, is adding application_static cookbook to your chef installation.  
 Berkshelf example:
 
 ```ruby
@@ -61,7 +61,7 @@ Then create appropriate role:
 }
 ```
 
-Note that you shouldn't really store private key in role file, in favor of [databags](https://docs.getchef.com/essentials_data_bags.html) or even better [encrypted databags](https://docs.getchef.com/essentials_data_bags.html#encrypt-a-data-bag-item).  
+Note, that you shouldn't really store private key in role file, in favor of [databags](https://docs.getchef.com/essentials_data_bags.html) or even better [encrypted databags](https://docs.getchef.com/essentials_data_bags.html#encrypt-a-data-bag-item).  
 Also, if you getting troubles with multiline private key, use [this tip](https://tickets.opscode.com/browse/CHEF-3540).
 
 ### 3. apply role
