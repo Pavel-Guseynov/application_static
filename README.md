@@ -1,5 +1,7 @@
 application_static cookbook
 ===========================
+supermarket: https://supermarket.getchef.com/cookbooks/application_static  
+github:  https://github.com/allnightlong/application_static
 
 This is the simple chef cookbook to quick host static web sites with nginx. Based on excellent [application cookbook](https://github.com/poise/application), which is only providing LWRPs, this cookbook actually  has recipe.  
 
@@ -22,7 +24,7 @@ First thing todo, is adding application_static cookbook to your chef installatio
 Berkshelf example:
 
 ```ruby
-cookbook "application_static", github: "allnightlong/application_static"
+cookbook "application_static"
 ```
 
 ### 2. create role
