@@ -1,12 +1,4 @@
-# Created by https://www.gitignore.io
-
-### ChefCookbook ###
-.vagrant
-/cookbooks
-
-# Bundler
-bin/*
-.bundle/*
-
-.kitchen/
-.kitchen.local.yml
+.bundle
+.cache
+.kitchen
+bin
