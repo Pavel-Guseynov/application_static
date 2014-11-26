@@ -8,8 +8,8 @@ This is the simple chef cookbook to quick host static web sites with nginx. Base
 So after defining it with Berkshelf/Librarian, you have to provide as minimal config as possible, to make your sites working.
 
 
-config
-======
+Config
+------
 Let's imagine you have several static websites, you want to host, each in it's own repository:
 
 ```
@@ -73,3 +73,9 @@ knife node run_list add NODE_NAME role[static_sites]
 That's basically it. After adding this role to node's run-list, your sites should be up and running.  
 This cookbook was tested on Ubuntu 14.04 LTS, but there is nothing os/platform/version specific, so it should work on any environment.  
 [Pull-requests](https://github.com/allnightlong/application_static/pulls) are very warm welcome.
+
+TODO
+----
+* Understand chef testing workflow and write tests.
+* Official support other OS(rpm-based) and scm (svn, hg).
+* Support [all paraemters](https://github.com/poise/application#attribute-parameters)  of application cookbook (revision, migrate, rollback_on_error, etc).
