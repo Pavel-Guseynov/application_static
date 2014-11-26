@@ -78,4 +78,4 @@ TODO
 ----
 * Understand chef testing workflow and write tests.
 * Official support other OS(rpm-based) and scm (svn, hg).
-* Support [all paraemters](https://github.com/poise/application#attribute-parameters)  of application cookbook (revision, migrate, rollback_on_error, etc).
+* Support [all parameters](https://github.com/poise/application#attribute-parameters)  of application cookbook (revision, migrate, rollback_on_error, etc).
